@@ -1,0 +1,52 @@
+<html>
+    <body>
+        <table>
+        <tr>
+            <th>coachname</th>
+            <th>slotfrom</th>
+            <th>slotto</th>
+            <th>day</th>
+            <th>filledslots</th>
+            <th>filled_number_of_slots</th>
+            <th>remaining_number_of_slots</th>
+            <th>Update</th>
+
+        </tr>
+        {% for i in coaches%}
+        <tr>
+            <td>{{i.CoachName}}</td>
+            <td>{{i.TotalSlotFrom}}</td>
+            <td>{{i.TotalSlotuntil}}</td>
+            <td>{{i.Day}}</td>
+            <td>
+                {% for j,k in filled.items %}
+                    {% if i.id == j%}
+                        {% for p in k%}
+                            {{p.Slotperiodfrom}}
+                        {% endfor %}
+                    {% endif %}
+                {% endfor %}
+            </td>
+            <td>
+                {% for m,n in totalslots.items %}
+                    {% if i.id == m%}
+                        {{n}}
+                    {% endif %}
+                {% endfor %}
+            </td>
+            <td>
+                {% for m,n in remainingtimeslots.items %}
+                    {% if i.id == m%}
+                        {{n}}
+                    {% endif %}
+                {% endfor %}
+            </td>
+            <td>
+                <a href="{% url 'insertv' i.id %}"> Book a slot</a>
+            </td>
+        </tr>
+        {%endfor%}
+    </table>
+    <button><a href="{% url 'detailsdelete'%}">Unbook a Slot if it is finished</a></button>
+    </body>
+</html>

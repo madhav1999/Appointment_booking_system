@@ -1,0 +1,27 @@
+<html>
+    <body>
+        <table>
+        <tr>
+            <th>coachname day</th>
+            <th>slotfrom</th>
+            <th>Delete</th>
+
+        </tr>
+        
+        {% for i,j in filled.items%}
+            {% for m in j %}
+            <tr>
+            <td>{{m.CoachName}}</td>
+            <td>{{m.Slotperiodfrom}}</td>
+            <td>
+                <a href="{% url 'deletev' m.id %}"> Unbook the slot</a>
+            </td>
+           </tr>      
+            {% endfor %}
+        {% endfor %}
+        
+    </tr>
+    </table>
+    <button><a href="{% url 'Home'%}">Go Back to Home</a></button>
+    </body>
+</html>

@@ -1,0 +1,18 @@
+<html>
+    <body>
+        {% if alreadybook %}
+            <p> Please enter an unbooked slot </p>
+        {%endif%}
+        {% if limit %}
+            <p>Please enter from exact limit</p>
+        {%endif%} 
+        {% if Noslots %}
+            <p>There are no slots for this Couch 
+                {% for i in coach%}
+                    <b>{{i.CoachName}}</b>
+                {% endfor %}
+            </p>
+        {%endif%}  
+        <a href="{% url 'Home' %}">Go To Home</a>
+    </body>
+</html>
